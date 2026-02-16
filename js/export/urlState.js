@@ -37,6 +37,14 @@ class URLState {
       params.set('statuses', state.filters.statuses.join(','));
     }
 
+    if (state.filters.domains && state.filters.domains.length > 0) {
+      params.set('domains', state.filters.domains.join(','));
+    }
+
+    if (state.filters.countries && state.filters.countries.length > 0) {
+      params.set('countries', state.filters.countries.join(','));
+    }
+
     if (state.filters.search) {
       params.set('search', state.filters.search);
     }
@@ -59,6 +67,8 @@ class URLState {
         types: params.get('types') ? params.get('types').split(',') : [],
         authors: params.get('authors') ? params.get('authors').split(',') : [],
         statuses: params.get('statuses') ? params.get('statuses').split(',') : [],
+        domains: params.get('domains') ? params.get('domains').split(',') : [],
+        countries: params.get('countries') ? params.get('countries').split(',') : [],
         search: params.get('search') || ''
       },
       colorScheme: params.get('colorScheme') || 'type'

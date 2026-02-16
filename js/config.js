@@ -4,9 +4,33 @@
 const CONFIG = {
   // File paths
   paths: {
-    csvData: 'data/ASRG_Specifications_List-covesa - List.csv',
+    csvData: 'data/ASRG_Specifications_List_Enriched.csv',
     relationships: 'data/relationships.json'
   },
+
+  // Domain options (multi-select)
+  domains: [
+    'IT',
+    'services',
+    'product',
+    'automotive',
+    'technical',
+    'organizational',
+    'tooling',
+    'process',
+    'method'
+  ],
+
+  // Status options
+  statuses: [
+    'Published',
+    'Released',
+    'Draft',
+    'Under Development',
+    'Work in Progress',
+    'Superseded',
+    'Withdrawn'
+  ],
 
   // Color schemes
   colors: {

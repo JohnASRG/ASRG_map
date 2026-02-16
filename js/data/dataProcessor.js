@@ -21,11 +21,13 @@ class DataProcessor {
         type: entity.type,
         author: entity.author,
         date,
-        domain: entity.domain,
+        domain: entity.domain, // Now an array
         status: entity.status,
         version: entity.version,
         language: entity.language,
+        country: entity.country,
         link: entity.link,
+        description: entity.description,
 
         // Computed fields
         shortTitle,
@@ -70,7 +72,14 @@ class DataProcessor {
     const values = new Set();
     nodes.forEach(node => {
       const value = node[field];
-      if (value && value.trim() !== '' && value !== 'Unknown') {
+      if (Array.isArray(value)) {
+        // Handle array fields (like domain)
+        value.forEach(v => {
+          if (v && v.trim() !== '' && v !== 'Unknown') {
+            values.add(v);
+          }
+        });
+      } else if (value && value.trim() !== '' && value !== 'Unknown') {
         values.add(value);
       }
     });
@@ -84,7 +93,9 @@ class DataProcessor {
     return {
       types: this.getUniqueValues(nodes, 'type'),
       authors: this.getUniqueValues(nodes, 'authorShort'),
-      statuses: this.getUniqueValues(nodes, 'status')
+      statuses: this.getUniqueValues(nodes, 'status'),
+      domains: this.getUniqueValues(nodes, 'domain'),
+      countries: this.getUniqueValues(nodes, 'country')
     };
   }
 

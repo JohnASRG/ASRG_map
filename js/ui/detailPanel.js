@@ -61,6 +61,13 @@ class DetailPanel {
         <p>${escapeHTML(node.title)}</p>
       </div>
 
+      ${node.description ? `
+      <div class="detail-section">
+        <h3>Description</h3>
+        <p>${escapeHTML(node.description)}</p>
+      </div>
+      ` : ''}
+
       <div class="detail-section">
         <h3>Information</h3>
         <table class="detail-table">
@@ -68,6 +75,12 @@ class DetailPanel {
             <td><strong>Author:</strong></td>
             <td>${escapeHTML(node.author)}</td>
           </tr>
+          ${node.country ? `
+          <tr>
+            <td><strong>Country:</strong></td>
+            <td>${escapeHTML(node.country)}</td>
+          </tr>
+          ` : ''}
           ${node.date ? `
           <tr>
             <td><strong>Date:</strong></td>
@@ -92,10 +105,10 @@ class DetailPanel {
             <td>${escapeHTML(node.language)}</td>
           </tr>
           ` : ''}
-          ${node.domain ? `
+          ${node.domain && node.domain.length > 0 ? `
           <tr>
-            <td><strong>Domain:</strong></td>
-            <td>${escapeHTML(node.domain)}</td>
+            <td><strong>Domains:</strong></td>
+            <td>${node.domain.map(d => `<span class="domain-tag">${escapeHTML(d)}</span>`).join(' ')}</td>
           </tr>
           ` : ''}
         </table>

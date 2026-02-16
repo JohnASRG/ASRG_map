@@ -8,24 +8,28 @@ class DataLoader {
    */
   async loadCSV() {
     try {
-      const data = await d3.csv(CONFIG.paths.csvData, (row, index) => {
-        // Skip first 4 header rows and empty row
-        if (index < 4) return null;
-
+      const data = await d3.csv(CONFIG.paths.csvData, (row) => {
         // Skip empty rows
         if (!row.Title || row.Title.trim() === '') return null;
 
+        // Parse multi-select domain (comma-separated)
+        const domains = row.Domain ?
+          row.Domain.split(',').map(d => d.trim()).filter(d => d) :
+          [];
+
         // Parse and clean the row
         return {
-          link: row.Link || '',
           title: row.Title.trim(),
           type: row.Type || 'Unknown',
-          date: row.Date || '',
-          domain: row.Domain || '',
+          domain: domains, // Now an array
           status: row.Status || 'Unknown',
           version: row.Version || '',
           language: row.Language || 'English',
-          author: row.Author || 'Unknown'
+          country: row.Country || 'International',
+          author: row.Author || 'Unknown',
+          date: row.Date || '',
+          link: row.Link || '',
+          description: row.Description || ''
         };
       });
 

@@ -12,6 +12,8 @@ class SearchFilter {
       types: new Set(),
       authors: new Set(),
       statuses: new Set(),
+      domains: new Set(),
+      countries: new Set(),
       search: ''
     };
 
@@ -20,6 +22,8 @@ class SearchFilter {
     this.filterTypeContainer = document.getElementById('filter-type');
     this.filterAuthorContainer = document.getElementById('filter-author');
     this.filterStatusContainer = document.getElementById('filter-status');
+    this.filterDomainContainer = document.getElementById('filter-domain');
+    this.filterCountryContainer = document.getElementById('filter-country');
     this.clearButton = document.getElementById('btn-clear-filters');
     this.searchResults = document.getElementById('search-results');
 
@@ -38,6 +42,8 @@ class SearchFilter {
     this.renderFilterGroup(this.filterTypeContainer, options.types, 'type');
     this.renderFilterGroup(this.filterAuthorContainer, options.authors, 'author');
     this.renderFilterGroup(this.filterStatusContainer, options.statuses, 'status');
+    this.renderFilterGroup(this.filterDomainContainer, options.domains, 'domain');
+    this.renderFilterGroup(this.filterCountryContainer, options.countries, 'country');
 
     // Setup search
     this.searchInput.addEventListener('input', debounce((e) => {
@@ -98,14 +104,23 @@ class SearchFilter {
       const statusMatch = this.activeFilters.statuses.size === 0 ||
         this.activeFilters.statuses.has(node.status);
 
+      // Check domain filter (node.domain is an array)
+      const domainMatch = this.activeFilters.domains.size === 0 ||
+        node.domain.some(d => this.activeFilters.domains.has(d));
+
+      // Check country filter
+      const countryMatch = this.activeFilters.countries.size === 0 ||
+        this.activeFilters.countries.has(node.country);
+
       // Check search filter
       const searchMatch = this.activeFilters.search === '' ||
         node.title.toLowerCase().includes(this.activeFilters.search) ||
         node.shortTitle.toLowerCase().includes(this.activeFilters.search) ||
-        node.author.toLowerCase().includes(this.activeFilters.search);
+        node.author.toLowerCase().includes(this.activeFilters.search) ||
+        (node.description && node.description.toLowerCase().includes(this.activeFilters.search));
 
       // Node is visible if it matches all filters
-      if (typeMatch && authorMatch && statusMatch && searchMatch) {
+      if (typeMatch && authorMatch && statusMatch && domainMatch && countryMatch && searchMatch) {
         visibleIds.add(node.id);
       }
     });
@@ -138,6 +153,8 @@ class SearchFilter {
     this.activeFilters.types.clear();
     this.activeFilters.authors.clear();
     this.activeFilters.statuses.clear();
+    this.activeFilters.domains.clear();
+    this.activeFilters.countries.clear();
     this.activeFilters.search = '';
 
     // Clear UI
@@ -145,6 +162,8 @@ class SearchFilter {
     this.filterTypeContainer.querySelectorAll('input').forEach(cb => cb.checked = false);
     this.filterAuthorContainer.querySelectorAll('input').forEach(cb => cb.checked = false);
     this.filterStatusContainer.querySelectorAll('input').forEach(cb => cb.checked = false);
+    this.filterDomainContainer.querySelectorAll('input').forEach(cb => cb.checked = false);
+    this.filterCountryContainer.querySelectorAll('input').forEach(cb => cb.checked = false);
 
     // Apply filters (will show all)
     this.applyFilters();
@@ -178,6 +197,22 @@ class SearchFilter {
       });
     }
 
+    if (filters.domains) {
+      filters.domains.forEach(domain => {
+        this.activeFilters.domains.add(domain);
+        const checkbox = this.filterDomainContainer.querySelector(`input[value="${domain}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+    }
+
+    if (filters.countries) {
+      filters.countries.forEach(country => {
+        this.activeFilters.countries.add(country);
+        const checkbox = this.filterCountryContainer.querySelector(`input[value="${country}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+    }
+
     if (filters.search) {
       this.activeFilters.search = filters.search;
       this.searchInput.value = filters.search;
@@ -194,6 +229,8 @@ class SearchFilter {
       types: Array.from(this.activeFilters.types),
       authors: Array.from(this.activeFilters.authors),
       statuses: Array.from(this.activeFilters.statuses),
+      domains: Array.from(this.activeFilters.domains),
+      countries: Array.from(this.activeFilters.countries),
       search: this.activeFilters.search
     };
   }
