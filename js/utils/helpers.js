@@ -22,16 +22,16 @@ function generateID(title) {
   // Try to extract standard/regulation number
   // Order matters - more specific patterns first!
   const patterns = [
-    /(ISO\/IEC[\/\s]*\d+)/i,          // ISO/IEC standards (must be before ISO)
+    /(ISO\/IEC[\/\s]*\d+[-\d]*)/i,    // ISO/IEC standards with parts (e.g., 9797-1)
     /(ISO[\/\s]*PAS[\/\s]*\d+)/i,     // ISO PAS standards
     /(ISO[\/\s]*\d+)/i,               // ISO standards
-    /(SAE[\/\s]*J\d+[\w\/]*)/i,       // SAE standards
+    /(SAE[\/\s]*J\d+[\/\d]*)/i,       // SAE standards (e.g., J2945/1)
     /(IEEE[\/\s]*\d+[\.\d]*)/i,       // IEEE standards
     /(UNECE[\/\s]*R\d+)/i,            // UNECE regulations
     /(NIST[\/\s]*FIPS[\/\s]*\d+[-\d]*)/i, // NIST FIPS
     /(NIST[\/\s]*[\w\d\-]+)/i,        // Other NIST
     /(CERT[\/\s]*C)/i,                // CERT C
-    /(MISRA[\/\s]*C[\/\s]*\d*)/i      // MISRA C
+    /(MISRA[\/\s]*C)/i                // MISRA C (simplified - just "C")
   ];
 
   for (const pattern of patterns) {
