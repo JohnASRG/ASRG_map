@@ -76,8 +76,8 @@
       "description": "Application security within ISO 27000 family"
     },
     {
-      "source": "IEEE_1609",
-      "target": "SAE_J2945",
+      "source": "IEEE_1609_2",
+      "target": "SAE_J2945_1",
       "type": "complements",
       "description": "Security services for V2V communications"
     },
@@ -166,7 +166,7 @@
       "description": "Hardware security for automotive cybersecurity"
     },
     {
-      "source": "NIST_FIPS_140",
+      "source": "NIST_FIPS_140_3",
       "target": "SAE_J3101",
       "type": "references",
       "description": "Cryptographic module requirements"
@@ -184,7 +184,7 @@
       "description": "Security evaluation criteria for IT systems"
     },
     {
-      "source": "ISO_IEC_9797",
+      "source": "ISO_IEC_9797_1",
       "target": "ISO_21434",
       "type": "references",
       "description": "Message authentication codes for data integrity"

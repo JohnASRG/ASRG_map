@@ -20,14 +20,18 @@ function generateID(title) {
   if (!title) return 'UNKNOWN_' + Math.random().toString(36).substr(2, 9);
 
   // Try to extract standard/regulation number
+  // Order matters - more specific patterns first!
   const patterns = [
-    /(ISO[\/\s]*\d+)/i,
-    /(SAE[\/\s]*J\d+)/i,
-    /(IEEE[\/\s]*\d+[\.\d]*)/i,
-    /(UNECE[\/\s]*R\d+)/i,
-    /(NIST[\/\s]*[\w\d\-]+)/i,
-    /(CERT[\/\s]*[\w\d\-]+)/i,
-    /(MISRA[\/\s]*[\w\d\-:]+)/i
+    /(ISO\/IEC[\/\s]*\d+)/i,          // ISO/IEC standards (must be before ISO)
+    /(ISO[\/\s]*PAS[\/\s]*\d+)/i,     // ISO PAS standards
+    /(ISO[\/\s]*\d+)/i,               // ISO standards
+    /(SAE[\/\s]*J\d+[\w\/]*)/i,       // SAE standards
+    /(IEEE[\/\s]*\d+[\.\d]*)/i,       // IEEE standards
+    /(UNECE[\/\s]*R\d+)/i,            // UNECE regulations
+    /(NIST[\/\s]*FIPS[\/\s]*\d+[-\d]*)/i, // NIST FIPS
+    /(NIST[\/\s]*[\w\d\-]+)/i,        // Other NIST
+    /(CERT[\/\s]*C)/i,                // CERT C
+    /(MISRA[\/\s]*C[\/\s]*\d*)/i      // MISRA C
   ];
 
   for (const pattern of patterns) {

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug - ASRG Map</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h1>Debug Console</h1>
+    <pre id="output"></pre>
+
+    <script>
+        const output = document.getElementById('output');
+
+        function log(msg) {
+            output.textContent += msg + '\n';
+            console.log(msg);
+        }
+
+        // Test CSV loading
+        async function testLoad() {
+            try {
+                log('Testing CSV load...');
+
+                const data = await d3.csv('data/ASRG_Specifications_List_Enriched.csv', (row) => {
+                    if (!row.Title || row.Title.trim() === '') return null;
+
+                    const domains = row.Domain ?
+                        row.Domain.split(',').map(d => d.trim()).filter(d => d) :
+                        [];
+
+                    return {
+                        title: row.Title.trim(),
+                        type: row.Type || 'Unknown',
+                        domain: domains,
+                        status: row.Status || 'Unknown',
+                        author: row.Author || 'Unknown'
+                    };
+                });
+
+                const cleaned = data.filter(d => d !== null);
+                log(`✅ Loaded ${cleaned.length} entities`);
+                log(`Sample: ${cleaned[0].title}`);
+                log(`Domains: ${cleaned[0].domain.join(', ')}`);
+
+                // Test ID generation
+                function generateID(title) {
+                    const patterns = [
+                        /(ISO\/IEC[\/\s]*\d+)/i,
+                        /(ISO[\/\s]*\d+)/i,
+                        /(SAE[\/\s]*J\d+)/i,
+                        /(IEEE[\/\s]*\d+[\.\d]*)/i,
+                        /(UNECE[\/\s]*R\d+)/i,
+                        /(NIST[\/\s]*FIPS[\/\s]*\d+)/i,
+                        /(NIST[\/\s]*[\w\d\-]+)/i
+                    ];
+
+                    for (const pattern of patterns) {
+                        const match = title.match(pattern);
+                        if (match) {
+                            return match[1].replace(/[\s\/\-\.]/g, '_').toUpperCase();
+                        }
+                    }
+
+                    return title.substring(0, 50).replace(/[^a-zA-Z0-9]/g, '_');
+                }
+
+                log('\nGenerated IDs:');
+                cleaned.slice(0, 5).forEach(item => {
+                    const id = generateID(item.title);
+                    log(`  ${id} <- ${item.title.substring(0, 50)}...`);
+                });
+
+                // Test relationships
+                log('\nTesting relationships...');
+                const relResp = await fetch('data/relationships.json');
+                const relData = await relResp.json();
+                log(`✅ Loaded ${relData.relationships.length} relationships`);
+
+                // Check which relationships match
+                const ids = new Set(cleaned.map(d => generateID(d.title)));
+                let matchCount = 0;
+                let unmatchedSources = [];
+                let unmatchedTargets = [];
+
+                relData.relationships.forEach(rel => {
+                    const sourceMatch = ids.has(rel.source);
+                    const targetMatch = ids.has(rel.target);
+
+                    if (sourceMatch && targetMatch) {
+                        matchCount++;
+                    } else {
+                        if (!sourceMatch) unmatchedSources.push(rel.source);
+                        if (!targetMatch) unmatchedTargets.push(rel.target);
+                    }
+                });
+
+                log(`\n✅ ${matchCount}/${relData.relationships.length} relationships matched`);
+
+                if (unmatchedSources.length > 0) {
+                    log(`\n❌ Unmatched sources: ${[...new Set(unmatchedSources)].join(', ')}`);
+                }
+                if (unmatchedTargets.length > 0) {
+                    log(`\n❌ Unmatched targets: ${[...new Set(unmatchedTargets)].join(', ')}`);
+                }
+
+                log('\n✅ All tests passed!');
+
+            } catch (error) {
+                log(`❌ Error: ${error.message}`);
+                log(error.stack);
+            }
+        }
+
+        testLoad();
+    </script>
+</body>
+</html>
