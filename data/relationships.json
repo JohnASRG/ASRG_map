@@ -46,32 +46,38 @@
       "description": "UNECE R155 regulation references ISO 21434 standard"
     },
     {
-      "source": "ISO_27001",
-      "target": "ISO_27002",
+      "source": "UNECE_R156",
+      "target": "ISO_24089",
+      "type": "references",
+      "description": "Software update regulation references ISO 24089"
+    },
+    {
+      "source": "ISO_IEC_27001",
+      "target": "ISO_IEC_27002",
       "type": "complements",
       "description": "ISMS framework and implementation controls"
     },
     {
-      "source": "ISO_27000",
-      "target": "ISO_27001",
+      "source": "ISO_IEC_27000",
+      "target": "ISO_IEC_27001",
       "type": "partOf",
       "description": "Part of ISO 27000 series"
     },
     {
-      "source": "ISO_27000",
-      "target": "ISO_27002",
+      "source": "ISO_IEC_27000",
+      "target": "ISO_IEC_27002",
       "type": "partOf",
       "description": "Part of ISO 27000 series"
     },
     {
-      "source": "ISO_27034",
-      "target": "ISO_27001",
+      "source": "ISO_IEC_27034",
+      "target": "ISO_IEC_27001",
       "type": "partOf",
       "description": "Application security within ISO 27000 family"
     },
     {
-      "source": "IEEE_1609_2",
-      "target": "SAE_J2945_1",
+      "source": "IEEE_1609",
+      "target": "SAE_J2945",
       "type": "complements",
       "description": "Security services for V2V communications"
     },
@@ -94,20 +100,20 @@
       "description": "Software lifecycle process framework"
     },
     {
-      "source": "MISRA_C_2012",
+      "source": "MISRA_C",
       "target": "CERT_C",
       "type": "complements",
       "description": "C language secure coding standards"
     },
     {
       "source": "ISO_21434",
-      "target": "ISO_27001",
+      "target": "ISO_IEC_27001",
       "type": "references",
       "description": "Information security management principles"
     },
     {
       "source": "UNECE_R155",
-      "target": "ISO_27001",
+      "target": "ISO_IEC_27001",
       "type": "references",
       "description": "ISMS requirements for vehicles"
     },
@@ -118,38 +124,38 @@
       "description": "Software development processes for safety"
     },
     {
-      "source": "ISO_27000",
-      "target": "ISO_27003",
+      "source": "ISO_IEC_27000",
+      "target": "ISO_IEC_27003",
       "type": "partOf",
       "description": "Part of ISO 27000 series"
     },
     {
-      "source": "ISO_27000",
-      "target": "ISO_27004",
+      "source": "ISO_IEC_27000",
+      "target": "ISO_IEC_27004",
       "type": "partOf",
       "description": "Part of ISO 27000 series"
     },
     {
-      "source": "ISO_27000",
-      "target": "ISO_27005",
+      "source": "ISO_IEC_27000",
+      "target": "ISO_IEC_27005",
       "type": "partOf",
       "description": "Part of ISO 27000 series"
     },
     {
-      "source": "ISO_27003",
-      "target": "ISO_27001",
+      "source": "ISO_IEC_27003",
+      "target": "ISO_IEC_27001",
       "type": "extends",
       "description": "Implementation guidance for ISMS"
     },
     {
-      "source": "ISO_27004",
-      "target": "ISO_27001",
+      "source": "ISO_IEC_27004",
+      "target": "ISO_IEC_27001",
       "type": "extends",
       "description": "Measurement framework for ISMS"
     },
     {
-      "source": "ISO_27005",
-      "target": "ISO_27001",
+      "source": "ISO_IEC_27005",
+      "target": "ISO_IEC_27001",
       "type": "extends",
       "description": "Risk management for ISMS"
     },
@@ -160,31 +166,31 @@
       "description": "Hardware security for automotive cybersecurity"
     },
     {
-      "source": "NIST_FIPS_140_2",
+      "source": "NIST_FIPS_140",
       "target": "SAE_J3101",
       "type": "references",
       "description": "Cryptographic module requirements"
     },
     {
-      "source": "ISO_11889",
+      "source": "ISO_IEC_11889",
       "target": "SAE_J3101",
       "type": "references",
       "description": "Trusted Platform Module for hardware security"
     },
     {
-      "source": "ISO_15408",
-      "target": "ISO_27001",
+      "source": "ISO_IEC_15408",
+      "target": "ISO_IEC_27001",
       "type": "complements",
       "description": "Security evaluation criteria for IT systems"
     },
     {
-      "source": "ISO_9797_1",
+      "source": "ISO_IEC_9797",
       "target": "ISO_21434",
       "type": "references",
       "description": "Message authentication codes for data integrity"
     },
     {
-      "source": "MISRA_C_2012",
+      "source": "MISRA_C",
       "target": "ISO_26262",
       "type": "references",
       "description": "C coding guidelines for safety-critical systems"
@@ -194,6 +200,66 @@
       "target": "ISO_21434",
       "type": "references",
       "description": "Secure coding practices for automotive software"
+    },
+    {
+      "source": "ISO_IEC_27017",
+      "target": "ISO_IEC_27001",
+      "type": "extends",
+      "description": "Cloud security controls based on 27001"
+    },
+    {
+      "source": "ISO_IEC_27018",
+      "target": "ISO_IEC_27017",
+      "type": "extends",
+      "description": "PII protection for cloud services"
+    },
+    {
+      "source": "ISO_IEC_27014",
+      "target": "ISO_IEC_27001",
+      "type": "extends",
+      "description": "Governance framework for information security"
+    },
+    {
+      "source": "ISO_IEC_27006",
+      "target": "ISO_IEC_27001",
+      "type": "extends",
+      "description": "Certification body requirements"
+    },
+    {
+      "source": "ISO_IEC_27007",
+      "target": "ISO_IEC_27001",
+      "type": "extends",
+      "description": "Auditing guidelines for ISMS"
+    },
+    {
+      "source": "ISO_IEC_27010",
+      "target": "ISO_IEC_27001",
+      "type": "extends",
+      "description": "Inter-sector information security"
+    },
+    {
+      "source": "ISO_IEC_27013",
+      "target": "ISO_IEC_27001",
+      "type": "extends",
+      "description": "Integrated ISMS and service management"
+    },
+    {
+      "source": "ISO_29101",
+      "target": "ISO_IEC_27001",
+      "type": "complements",
+      "description": "Privacy architecture framework"
+    },
+    {
+      "source": "ISO_PAS_5083",
+      "target": "ISO_26262",
+      "type": "complements",
+      "description": "Safety for automated driving complements functional safety"
+    },
+    {
+      "source": "ISO_IEC_29119",
+      "target": "ISO_12207",
+      "type": "references",
+      "description": "Software testing within software lifecycle"
     }
   ]
 }
