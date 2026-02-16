@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# Environment
+.env
+.env.local
+
+# Build outputs (if any)
+dist/
+build/
+
+# Context (optional - uncomment if you don't want to track it)
+# context.md

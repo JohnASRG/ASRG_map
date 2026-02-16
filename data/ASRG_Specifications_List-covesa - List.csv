@@ -1,0 +1,100 @@
+,,,,,,,,
+Specification List,,,,,,,,
+,,,,,,,,
+Link,Title,Type,Date,Domain,Status,Version,Language,Author
+,,,,,,,,
+Link,"Road vehicles — Cybersecurity engineering
+ISO 21434",Norm / Standard,2/12/2020,General,Released,DIS,English,ISO / SAE
+Link,"UNECE R155 
+",Regulation,,,,Draft,English,UNECE
+,"Privacy Principles for Vehicle Technologies and Services
+Auto Alliance",Best Practices,11/12/2014,,,1,English,"Alliance of Automobile Manufacturers, Inc.
+Association of Global Automakers, Inc."
+,"Information technology — Application security
+ISO/IEC 27034",Norm / Standard,11/1/2011,,,1,English,ISO
+,"Cybersecurity Guidebook For Cyber-physical Vehicle Systems
+SAE J3061",Norm / Standard,1/14/2016,,,1,English,SAE International
+,"Standard for Wireless Access in Vehicular Environments
+IEE 1609.2 ",Norm / Standard,3/1/2016,,,3,English,IEEE Standards Association
+,"Systems and software engineering — Software life cycle processes
+ISO 12207 ",Norm / Standard,2/1/2008,,,2,English,ISO
+,"Road vehicles — Vehicle to grid communication interface
+ISO 15118",Norm / Standard,12/1/2015,,,4,English,ISO
+,"Guidelines for the Use of the C-Language in Critical Systems
+MISRA C:2012 (MISRA C3)",Norm / Standard,3/1/2013,,,3,English,Motor Industry Software Reliability Association
+,"Programming Language Secure Coding Standard
+CERT C",Norm / Standard,9/10/2007,,,1,English,CERT Division of the Software Engineering Institute (SEI)
+,"On-Board System Requirements for V2V Safety Communications
+Dedicated Short Range Communication (DSRC) Minimum Performance Requirement
+SAE J2945/1",Norm / Standard,3/30/2016,,,1,English,SAE International
+,"Requirements for Hardware-Protected Security for Ground Vehicle Application
+SAE J3101",Norm / Standard,work in progress,,,1,English,SAE International
+,"Security Requirements for Cryptographic Modules
+NIST FIPS 140-2",Norm / Standard,12/3/2002,,,2,English,National Institute of Standards and Technology
+,"Information technology — Security techniques
+ISO/IEC 9797-1",Norm / Standard,1/1/2011,,,2,English,ISO
+,"Information technology — Trusted Platform Module
+ISO/IEC 11889",Norm / Standard,1/12/2015,,,2,German/ English,ISO
+,"Information technology — Security techniques — Evaluation criteria for IT security 
+ISO 15408",Norm / Standard,12/1/2009,,,3,English,ISO
+,"INFORMATION SECURITY MANAGEMENT
+ISO/IEC 27000",Norm / Standard,2/15/2016,,,4,German/ English,ISO
+,"INFORMATION SECURITY MANAGEMENT – Requirements
+ISO/IEC 27001",Norm / Standard,1/3/2015,,,4,German,ISO
+,"Information technology — Security techniques — Code of practice for information security controls
+ISO/IEC 27002",Norm / Standard,2/1/2014,,,2,German,ISO
+,"Information security management system implementation guidance
+ISO/IEC 27003",Norm / Standard,2/1/2010,,,1,English,ISO
+,"Information security management - measurement
+ISO/IEC 27004",Norm / Standard,12/15/2009,,,1,English,ISO
+,"Information security risk management
+ISO/IEC 27005",Norm / Standard,6/1/2011,,,2,English,ISO
+,"Requirements for bodies providing audit and certification of information security management systems
+ISO/IEC 27006",Norm / Standard,10/1/2015,,,3,English,ISO
+,"Guidelines for information security management systems auditing
+ISO/IEC 27007",Norm / Standard,11/15/2011,,,1,English,ISO
+,"Guidelines for auditors on information security controls
+ISO/IEC TR 27008",Norm / Standard,10/15/2011,,,1,English,ISO
+,"Information technology — Security techniques — Sector-specific application
+DIN ISO/IEC 27009",Norm / Standard,2/4/2016,,,2,German/ English,ISO
+,"Information security management for intersector and interorganizational communications
+ISO/IEC 27010",Norm / Standard,11/1/2015,,,2,English,ISO
+,"Guidance on the integrated implementation of ISO/IEC 27001 and ISO/IEC 20000
+ISO/IEC 27013",Norm / Standard,12/1/2015,,,2,English,ISO
+,"Governance of information security
+ISO/IEC 27014",Norm / Standard,5/15/2013,,,1,English,ISO
+,"Information security management - organizational economics
+ISO/IEC TR 27016",Norm / Standard,1/3/2014,,,1,English,ISO
+,"Code of practice for information security controls based on ISO/IEC 27002 for cloud services
+ISO/IEC 27017",Norm / Standard,12/1/2015,,,1,English,ISO
+,"Code of practice for PII protection in public clouds acting as PII processors
+ISO/IEC 27018",Norm / Standard,8/1/2014,,,1,English,ISO
+,"Software- und Systemengineering - Software-Test
+ISO/IEC/IEEE 29119",Norm / Standard,9/1/2013,,,1,English,ISO
+,"Standards for Security Categorization of Federal Information and Information Systems 
+FIPS PUB 199",Norm / Standard,2/1/2004,,,1,English,ISO
+,"Road vehicles — Functional safety 
+ISO 26262",Norm / Standard,11/15/2015,,,1,English,ISO
+,"Information technology — Security techniques — Privacy architecture framework
+ISO 29101",Norm / Standard,10/1/2013,,,1,English,ISO
+,SAE Electronic Design Automation ,Working Group,,,,,,https://standardsworks.sae.org/standards-committees/electronic-design-automation-steering-committee
+,Vehicle Hardware Electrical Taskforce (TEVEES18),Working Group,,,,,,
+,Vehicle Hardware Electrical Taskforce (TEVEES18B),Working Group,,,,,,
+,"Safety for AD Systems 
+TC22/SC32/WG13 (ISO PAS 5083)",Working Group,,,,,,
+,SAE OnRoad AD (ORAD),Working Group,,,,,,
+,"Joint Working Group in Automotive Cybersecurity
+Chair SAE Vehicle Cybersecurity Systems Engineering Committee",Working Group,,,,,,
+,ISO/SAE Working Group (JWG),Working Group,,,,,,
+,US NIST ,Working Group,,,,,,
+,"SAE J3254 
+Cybersecurity Maturity Model
+ASPICE/SAE/ISO/ASAM",Working Group,,,,,,
+,EU Regulations – Cyber Resiliency Act (CRA),Regulation,,,,,,
+,"ISO 21434
+32/GVA Committee 
+ISO/IEC JTC 1/SC 27 - Information security, cybersecurity and privacy protection",Norm / Standard,,,,,,https://www.iso.org/committee/45306.html
+,"Software Updates
+TC22/SC32/WG12 (ISO 24089)",Norm / Standard,,,,,,
+,Global Platform,,,,,,,
+,Cybersecurity in AI for Automotive,,,,,,,

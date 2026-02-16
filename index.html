@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive Cybersecurity Ecosystem</title>
+    <meta name="description" content="Interactive visualization of automotive cybersecurity standards, regulations, and organizations">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/graph.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Loading State -->
+    <div id="loading" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading automotive cybersecurity ecosystem...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="error" class="error-overlay" style="display: none;">
+        <div class="error-content">
+            <h2>Error Loading Data</h2>
+            <p id="error-message"></p>
+            <button onclick="location.reload()">Retry</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="app" class="app-container" style="display: none;">
+
+        <!-- Header -->
+        <header class="app-header">
+            <h1>Automotive Cybersecurity Ecosystem</h1>
+            <p class="subtitle">Interactive visualization of standards, regulations, and organizations</p>
+
+            <!-- Controls -->
+            <div class="controls-container">
+                <button id="btn-play-pause" class="btn btn-control" title="Pause/Resume simulation">
+                    <span class="icon">⏸</span> Pause
+                </button>
+                <button id="btn-reset" class="btn btn-control" title="Reset view">
+                    <span class="icon">↻</span> Reset View
+                </button>
+                <button id="btn-export" class="btn btn-control" title="Export as PNG">
+                    <span class="icon">📥</span> Export PNG
+                </button>
+                <button id="btn-share" class="btn btn-control" title="Share URL">
+                    <span class="icon">🔗</span> Share
+                </button>
+
+                <div class="color-scheme-selector">
+                    <label for="color-scheme">Color by:</label>
+                    <select id="color-scheme">
+                        <option value="type">Type</option>
+                        <option value="author">Author</option>
+                        <option value="status">Status</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Search -->
+                <div class="search-section">
+                    <h3>Search</h3>
+                    <input type="text" id="search-input" placeholder="Search standards, regulations..." />
+                    <div id="search-results" class="search-results"></div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filter-section">
+                    <h3>Filter by Type</h3>
+                    <div id="filter-type" class="filter-group"></div>
+
+                    <h3>Filter by Author</h3>
+                    <div id="filter-author" class="filter-group"></div>
+
+                    <h3>Filter by Status</h3>
+                    <div id="filter-status" class="filter-group"></div>
+
+                    <button id="btn-clear-filters" class="btn btn-secondary">Clear All Filters</button>
+                </div>
+
+                <!-- Legend -->
+                <div class="legend-section">
+                    <h3>Legend <button id="btn-toggle-legend" class="btn-icon">▼</button></h3>
+                    <div id="legend-content" class="legend-content"></div>
+                </div>
+            </aside>
+
+            <!-- Graph Container -->
+            <main class="graph-section">
+                <div id="graph-container"></div>
+                <div id="graph-stats" class="graph-stats"></div>
+            </main>
+
+            <!-- Detail Panel -->
+            <aside id="detail-panel" class="detail-panel">
+                <button id="btn-close-detail" class="btn-close">×</button>
+                <div id="detail-content"></div>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/data/dataLoader.js"></script>
+    <script src="js/data/dataProcessor.js"></script>
+    <script src="js/data/graphBuilder.js"></script>
+    <script src="js/visualization/nodeRenderer.js"></script>
+    <script src="js/visualization/linkRenderer.js"></script>
+    <script src="js/visualization/interactions.js"></script>
+    <script src="js/visualization/forceGraph.js"></script>
+    <script src="js/ui/searchFilter.js"></script>
+    <script src="js/ui/detailPanel.js"></script>
+    <script src="js/ui/legend.js"></script>
+    <script src="js/ui/controls.js"></script>
+    <script src="js/export/imageExport.js"></script>
+    <script src="js/export/urlState.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

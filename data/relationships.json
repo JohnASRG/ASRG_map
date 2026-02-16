@@ -1,0 +1,199 @@
+{
+  "relationshipTypes": {
+    "extends": {
+      "strength": 1.0,
+      "color": "#4CAF50",
+      "description": "Extends or builds upon"
+    },
+    "references": {
+      "strength": 0.7,
+      "color": "#2196F3",
+      "description": "References or cites"
+    },
+    "requires": {
+      "strength": 0.9,
+      "color": "#FF9800",
+      "description": "Requires for compliance"
+    },
+    "complements": {
+      "strength": 0.5,
+      "color": "#9C27B0",
+      "description": "Complements or works with"
+    },
+    "partOf": {
+      "strength": 0.8,
+      "color": "#00BCD4",
+      "description": "Part of family/series"
+    }
+  },
+  "relationships": [
+    {
+      "source": "ISO_21434",
+      "target": "ISO_26262",
+      "type": "complements",
+      "description": "Cybersecurity complements functional safety"
+    },
+    {
+      "source": "ISO_21434",
+      "target": "SAE_J3061",
+      "type": "extends",
+      "description": "ISO 21434 extends SAE J3061 guidebook"
+    },
+    {
+      "source": "UNECE_R155",
+      "target": "ISO_21434",
+      "type": "references",
+      "description": "UNECE R155 regulation references ISO 21434 standard"
+    },
+    {
+      "source": "ISO_27001",
+      "target": "ISO_27002",
+      "type": "complements",
+      "description": "ISMS framework and implementation controls"
+    },
+    {
+      "source": "ISO_27000",
+      "target": "ISO_27001",
+      "type": "partOf",
+      "description": "Part of ISO 27000 series"
+    },
+    {
+      "source": "ISO_27000",
+      "target": "ISO_27002",
+      "type": "partOf",
+      "description": "Part of ISO 27000 series"
+    },
+    {
+      "source": "ISO_27034",
+      "target": "ISO_27001",
+      "type": "partOf",
+      "description": "Application security within ISO 27000 family"
+    },
+    {
+      "source": "IEEE_1609_2",
+      "target": "SAE_J2945_1",
+      "type": "complements",
+      "description": "Security services for V2V communications"
+    },
+    {
+      "source": "ISO_15118",
+      "target": "ISO_21434",
+      "type": "references",
+      "description": "V2G communication security requirements"
+    },
+    {
+      "source": "SAE_J3061",
+      "target": "ISO_26262",
+      "type": "complements",
+      "description": "Cybersecurity and safety integration"
+    },
+    {
+      "source": "ISO_12207",
+      "target": "ISO_21434",
+      "type": "references",
+      "description": "Software lifecycle process framework"
+    },
+    {
+      "source": "MISRA_C_2012",
+      "target": "CERT_C",
+      "type": "complements",
+      "description": "C language secure coding standards"
+    },
+    {
+      "source": "ISO_21434",
+      "target": "ISO_27001",
+      "type": "references",
+      "description": "Information security management principles"
+    },
+    {
+      "source": "UNECE_R155",
+      "target": "ISO_27001",
+      "type": "references",
+      "description": "ISMS requirements for vehicles"
+    },
+    {
+      "source": "ISO_26262",
+      "target": "ISO_12207",
+      "type": "references",
+      "description": "Software development processes for safety"
+    },
+    {
+      "source": "ISO_27000",
+      "target": "ISO_27003",
+      "type": "partOf",
+      "description": "Part of ISO 27000 series"
+    },
+    {
+      "source": "ISO_27000",
+      "target": "ISO_27004",
+      "type": "partOf",
+      "description": "Part of ISO 27000 series"
+    },
+    {
+      "source": "ISO_27000",
+      "target": "ISO_27005",
+      "type": "partOf",
+      "description": "Part of ISO 27000 series"
+    },
+    {
+      "source": "ISO_27003",
+      "target": "ISO_27001",
+      "type": "extends",
+      "description": "Implementation guidance for ISMS"
+    },
+    {
+      "source": "ISO_27004",
+      "target": "ISO_27001",
+      "type": "extends",
+      "description": "Measurement framework for ISMS"
+    },
+    {
+      "source": "ISO_27005",
+      "target": "ISO_27001",
+      "type": "extends",
+      "description": "Risk management for ISMS"
+    },
+    {
+      "source": "SAE_J3101",
+      "target": "ISO_21434",
+      "type": "complements",
+      "description": "Hardware security for automotive cybersecurity"
+    },
+    {
+      "source": "NIST_FIPS_140_2",
+      "target": "SAE_J3101",
+      "type": "references",
+      "description": "Cryptographic module requirements"
+    },
+    {
+      "source": "ISO_11889",
+      "target": "SAE_J3101",
+      "type": "references",
+      "description": "Trusted Platform Module for hardware security"
+    },
+    {
+      "source": "ISO_15408",
+      "target": "ISO_27001",
+      "type": "complements",
+      "description": "Security evaluation criteria for IT systems"
+    },
+    {
+      "source": "ISO_9797_1",
+      "target": "ISO_21434",
+      "type": "references",
+      "description": "Message authentication codes for data integrity"
+    },
+    {
+      "source": "MISRA_C_2012",
+      "target": "ISO_26262",
+      "type": "references",
+      "description": "C coding guidelines for safety-critical systems"
+    },
+    {
+      "source": "CERT_C",
+      "target": "ISO_21434",
+      "type": "references",
+      "description": "Secure coding practices for automotive software"
+    }
+  ]
+}
