@@ -146,6 +146,72 @@ class NodeRenderer {
   }
 
   /**
+   * Add a single new node to the existing node group (avoids re-rendering all nodes)
+   */
+  addSingleNode(container, newNode) {
+    const nodeGroup = container.select('g.nodes');
+    const dim = this.graphBuilder.getNodeDimensions(newNode.degree);
+
+    const node = nodeGroup.append('g')
+      .datum(newNode)
+      .attr('class', 'node')
+      .attr('data-id', newNode.id);
+
+    // Card background
+    node.append('rect')
+      .attr('class', 'node-card')
+      .attr('x', -dim.width / 2)
+      .attr('y', -dim.height / 2)
+      .attr('width', dim.width)
+      .attr('height', dim.height)
+      .attr('rx', CONFIG.nodes.cornerRadius)
+      .attr('ry', CONFIG.nodes.cornerRadius)
+      .attr('fill', CONFIG.nodes.bgColor)
+      .attr('stroke', CONFIG.nodes.strokeColor)
+      .attr('stroke-width', CONFIG.nodes.strokeWidth)
+      .style('filter', 'url(#card-shadow)');
+
+    // Colored accent bar
+    node.append('rect')
+      .attr('class', 'node-accent')
+      .attr('x', -dim.width / 2)
+      .attr('y', -dim.height / 2 + 6)
+      .attr('width', CONFIG.nodes.accentWidth)
+      .attr('height', dim.height - 12)
+      .attr('rx', 2)
+      .attr('ry', 2)
+      .attr('fill', this.getNodeColor(newNode));
+
+    // Title text
+    node.append('text')
+      .attr('class', 'node-title')
+      .attr('text-anchor', 'middle')
+      .attr('x', CONFIG.nodes.accentWidth / 2)
+      .attr('dy', '-0.15em')
+      .text(this.truncateText(newNode.shortTitle, newNode.degree))
+      .style('font-size', CONFIG.nodes.titleFontSize + 'px')
+      .style('font-weight', '600')
+      .style('fill', CONFIG.nodes.titleColor)
+      .style('pointer-events', 'none')
+      .style('user-select', 'none');
+
+    // Type text
+    node.append('text')
+      .attr('class', 'node-type')
+      .attr('text-anchor', 'middle')
+      .attr('x', CONFIG.nodes.accentWidth / 2)
+      .attr('dy', '1.15em')
+      .text(newNode.type)
+      .style('font-size', CONFIG.nodes.typeFontSize + 'px')
+      .style('fill', CONFIG.nodes.typeColor)
+      .style('pointer-events', 'none')
+      .style('user-select', 'none')
+      .style('opacity', 0);
+
+    return node;
+  }
+
+  /**
    * Truncate text to fit within node width
    */
   truncateText(text, degree) {

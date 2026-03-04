@@ -152,6 +152,7 @@ const CONFIG = {
 const EVENTS = {
   NODE_SELECTED: 'node:selected',
   NODE_DESELECTED: 'node:deselected',
+  NODE_ADDED: 'node:added',
   FILTERS_CHANGED: 'filters:changed',
   SEARCH_CHANGED: 'search:changed',
   COLOR_SCHEME_CHANGED: 'colorScheme:changed',
