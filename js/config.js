@@ -87,10 +87,10 @@ const CONFIG = {
 
   // Force simulation parameters
   simulation: {
-    chargeStrength: -400,
-    linkDistance: 150,
+    chargeStrength: -200,
+    linkDistance: 120,
     collisionRadius: 35,
-    centerStrength: 0.05,
+    centerStrength: 0.15,
     alphaDecay: 0.02,
     velocityDecay: 0.4
   },
