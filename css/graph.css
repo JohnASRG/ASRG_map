@@ -61,15 +61,21 @@
   transition: opacity 0.2s;
 }
 
-.node circle {
-  transition: stroke 0.2s, stroke-width 0.2s;
+.node rect {
+  transition: stroke 0.2s, stroke-width 0.2s, filter 0.2s;
 }
 
-.node:hover circle {
+.node:hover rect {
   stroke-width: 3 !important;
+  filter: brightness(1.1);
 }
 
-.node-label {
+.node-title {
+  font-family: var(--font-family);
+  user-select: none;
+}
+
+.node-type {
   font-family: var(--font-family);
   user-select: none;
   transition: opacity 0.2s;

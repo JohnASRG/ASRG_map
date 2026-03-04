@@ -1,5 +1,5 @@
 /**
- * Node renderer for the force graph
+ * Node renderer for the force graph — rounded rectangles with embedded text
  */
 
 class NodeRenderer {
@@ -32,7 +32,7 @@ class NodeRenderer {
   }
 
   /**
-   * Render nodes
+   * Render nodes as rounded rectangles with title and type text
    */
   renderNodes(container, nodes) {
     const nodeGroup = container.append('g')
@@ -44,25 +44,59 @@ class NodeRenderer {
       .attr('class', 'node')
       .attr('data-id', d => d.id);
 
-    // Add circles
-    node.append('circle')
-      .attr('r', d => this.graphBuilder.getNodeRadius(d.degree))
+    // Add rounded rectangles (centered on node position)
+    node.append('rect')
+      .attr('x', d => {
+        const dim = this.graphBuilder.getNodeDimensions(d.degree);
+        return -dim.width / 2;
+      })
+      .attr('y', d => {
+        const dim = this.graphBuilder.getNodeDimensions(d.degree);
+        return -dim.height / 2;
+      })
+      .attr('width', d => this.graphBuilder.getNodeDimensions(d.degree).width)
+      .attr('height', d => this.graphBuilder.getNodeDimensions(d.degree).height)
+      .attr('rx', CONFIG.nodes.cornerRadius)
+      .attr('ry', CONFIG.nodes.cornerRadius)
       .attr('fill', d => this.getNodeColor(d))
       .attr('stroke', '#fff')
       .attr('stroke-width', CONFIG.nodes.strokeWidth);
 
-    // Add labels
+    // Add title text (always visible, white, bold)
     node.append('text')
-      .attr('class', 'node-label')
-      .attr('dx', d => this.graphBuilder.getNodeRadius(d.degree) + 4)
-      .attr('dy', '.35em')
-      .text(d => d.shortTitle)
-      .style('font-size', '11px')
-      .style('fill', '#333')
+      .attr('class', 'node-title')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '-0.15em')
+      .text(d => this.truncateText(d.shortTitle, d.degree))
+      .style('font-size', CONFIG.nodes.titleFontSize + 'px')
+      .style('font-weight', '600')
+      .style('fill', '#fff')
       .style('pointer-events', 'none')
-      .style('opacity', 0); // Hidden by default, shown on zoom or hover
+      .style('user-select', 'none');
+
+    // Add type text (smaller, semi-transparent, shown on zoom)
+    node.append('text')
+      .attr('class', 'node-type')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '1.1em')
+      .text(d => d.type)
+      .style('font-size', CONFIG.nodes.typeFontSize + 'px')
+      .style('fill', 'rgba(255,255,255,0.7)')
+      .style('pointer-events', 'none')
+      .style('user-select', 'none')
+      .style('opacity', 0); // Hidden by default, shown on zoom
 
     return node;
+  }
+
+  /**
+   * Truncate text to fit within node width
+   */
+  truncateText(text, degree) {
+    const dim = this.graphBuilder.getNodeDimensions(degree);
+    const maxChars = Math.floor((dim.width - CONFIG.nodes.padding * 2) / 6.5);
+    if (text.length <= maxChars) return text;
+    return text.substring(0, maxChars - 1) + '\u2026';
   }
 
   /**
@@ -76,7 +110,7 @@ class NodeRenderer {
    * Update node colors (when color scheme changes)
    */
   updateColors(nodeSelection) {
-    nodeSelection.select('circle')
+    nodeSelection.select('rect')
       .transition()
       .duration(CONFIG.animation.duration)
       .attr('fill', d => this.getNodeColor(d));
@@ -90,16 +124,11 @@ class NodeRenderer {
       const node = d3.select(this);
       const isSelected = d.id === nodeId;
 
-      node.select('circle')
+      node.select('rect')
         .transition()
         .duration(CONFIG.animation.fadeDuration)
         .attr('stroke', isSelected ? CONFIG.colors.ui.selected : '#fff')
         .attr('stroke-width', isSelected ? 4 : CONFIG.nodes.strokeWidth);
-
-      node.select('text')
-        .transition()
-        .duration(CONFIG.animation.fadeDuration)
-        .style('opacity', isSelected ? 1 : 0);
     });
   }
 
@@ -125,16 +154,11 @@ class NodeRenderer {
       const node = d3.select(this);
       const isConnected = connectedIds.has(d.id);
 
-      node.select('circle')
+      node.select('rect')
         .transition()
         .duration(CONFIG.animation.fadeDuration)
         .attr('stroke', isConnected ? CONFIG.colors.ui.highlighted : '#fff')
         .attr('stroke-width', isConnected ? 3 : CONFIG.nodes.strokeWidth);
-
-      node.select('text')
-        .transition()
-        .duration(CONFIG.animation.fadeDuration)
-        .style('opacity', isConnected ? 1 : 0);
     });
   }
 
@@ -142,9 +166,10 @@ class NodeRenderer {
    * Update label visibility based on zoom level
    */
   updateLabelVisibility(nodeSelection, zoomLevel) {
-    const shouldShowLabels = zoomLevel > CONFIG.nodes.labelThreshold;
+    const shouldShowType = zoomLevel > CONFIG.nodes.labelThreshold;
 
-    nodeSelection.select('text')
+    // Type sub-label visibility controlled by zoom
+    nodeSelection.select('.node-type')
       .transition()
       .duration(CONFIG.animation.fadeDuration)
       .style('opacity', d => {
@@ -152,11 +177,11 @@ class NodeRenderer {
         const node = d3.select(`[data-id="${d.id}"]`);
         if (parseFloat(node.style('opacity')) < 0.5) return 0;
 
-        // Show important nodes (high degree) even at low zoom
+        // Show for important nodes (high degree) even at low zoom
         if (d.degree > 5) return 1;
 
         // Otherwise, show based on zoom level
-        return shouldShowLabels ? 1 : 0;
+        return shouldShowType ? 1 : 0;
       });
   }
 }

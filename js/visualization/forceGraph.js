@@ -96,7 +96,7 @@ class ForceGraph {
       .force('x', d3.forceX(width / 2).strength(CONFIG.simulation.centerStrength))
       .force('y', d3.forceY(height / 2).strength(CONFIG.simulation.centerStrength))
       .force('collision', d3.forceCollide()
-        .radius(d => this.graphBuilder.getNodeRadius(d.degree) + 5))
+        .radius(d => this.graphBuilder.getCollisionRadius(d.degree)))
       .alphaDecay(CONFIG.simulation.alphaDecay)
       .velocityDecay(CONFIG.simulation.velocityDecay);
 

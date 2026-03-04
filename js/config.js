@@ -87,21 +87,28 @@ const CONFIG = {
 
   // Force simulation parameters
   simulation: {
-    chargeStrength: -200,
-    linkDistance: 120,
+    chargeStrength: -400,
+    linkDistance: 180,
     collisionRadius: 35,
-    centerStrength: 0.15,
+    centerStrength: 0.12,
     alphaDecay: 0.02,
     velocityDecay: 0.4
   },
 
-  // Node rendering
+  // Node rendering (rounded rectangles)
   nodes: {
-    minRadius: 8,
-    maxRadius: 25,
-    defaultRadius: 12,
-    labelThreshold: 1.2, // Show labels when zoom > this value
-    strokeWidth: 2
+    baseWidth: 120,
+    baseHeight: 40,
+    cornerRadius: 6,
+    padding: 8,
+    strokeWidth: 2,
+    labelThreshold: 1.2,
+    // Scaling by degree
+    minScale: 0.85,
+    maxScale: 1.15,
+    // Text sizing
+    titleFontSize: 11,
+    typeFontSize: 9
   },
 
   // Link rendering
