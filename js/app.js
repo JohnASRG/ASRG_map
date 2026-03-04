@@ -10,6 +10,7 @@ class App {
     this.forceGraph = null;
     this.searchFilter = null;
     this.detailPanel = null;
+    this.addEntryPanel = null;
     this.legend = null;
     this.controls = null;
     this.imageExport = null;
@@ -59,6 +60,7 @@ class App {
       console.log('Initializing UI...');
       this.searchFilter = new SearchFilter(graphData.nodes);
       this.detailPanel = new DetailPanel(graphData);
+      this.addEntryPanel = new AddEntryPanel(graphData, this.forceGraph);
       this.legend = new Legend();
       this.controls = new Controls();
 
